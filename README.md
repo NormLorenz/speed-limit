@@ -35,11 +35,11 @@ https://www.youtube.com/watch?v=0poh_2rBq7E
   * Source - https://github.com/platformio
 
 ```json
-[env:esp32doit-devkit-v1]
-platform = espressif32
+[env:esp12e]
+platform = espressif8266
 framework = arduino
-board = esp32doit-devkit-v1
-monitor_speed = 115200
-build_flags = -D LED_BUILTIN=2
+board = esp12e
+// monitor_speed = 115200
+// build_flags = -D LED_BUILTIN=2
 ```
 
