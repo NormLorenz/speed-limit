@@ -43,3 +43,14 @@ board = esp12e
 // build_flags = -D LED_BUILTIN=2
 ```
 
+
+https://www.youtube.com/watch?v=86g4QMpPQBo
+
+MAX7219/ESP8266
+VCC/3.3V
+GND/Gnd
+DIN/D7
+CD/D8
+CLK/D5
+
+After connecting the wires, update code initialization LedControl lc = LedControl(7, 5, 8, 4);
