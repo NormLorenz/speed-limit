@@ -31,7 +31,6 @@
 
 #if defined(__AVR__)
 #include <avr/pgmspace.h>
-#include <avr/pgmspace.h>
 #elif defined(ESP8266)
 #include <pgmspace.h>
 #endif
