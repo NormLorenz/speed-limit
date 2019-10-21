@@ -47,10 +47,14 @@ board = esp12e
 https://www.youtube.com/watch?v=86g4QMpPQBo
 
 MAX7219/ESP8266
-VCC/3.3V
-GND/Gnd
-DIN/D7
-CD/D8
-CLK/D5
+
+VCC/3.3V - GREEN
+GND/Gnd - YELLOW
+DIN/D7 - ORANGE
+CS/D8 - RED
+CLK/D5 - BROWN
+
+LedControl(int dataPin, int clkPin, int csPin, int numDevices=1);
+LedControl(7, 5, 8, 4);
 
 After connecting the wires, update code initialization LedControl lc = LedControl(7, 5, 8, 4);

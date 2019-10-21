@@ -15,9 +15,10 @@ void lampOff(int);
  * number of devices 
  */
 // LedControl lc = LedControl(7, 5, 8, 4);
+LedControl lc = LedControl(D7, D5, D8, 4);
 
 /* we always wait a bit between updates of the display */
-unsigned long delaytime = 500;
+unsigned long delaytime = 10;
 
 void setup()
 {
@@ -26,19 +27,31 @@ void setup()
   // initialize LED digital pin as an output
   pinMode(LED_BUILTIN, OUTPUT);
 
-  // we have already set the number of devices when we created the LedControl
-  // int devices = lc.getDeviceCount();
+  // static const uint8_t D0   = 16;
+  // static const uint8_t D1   = 5;
+  // static const uint8_t D2   = 4;
+  // static const uint8_t D3   = 0;
+  // static const uint8_t D4   = 2;
+  // static const uint8_t D5   = 14;
+  // static const uint8_t D6   = 12;
+  // static const uint8_t D7   = 13;
+  // static const uint8_t D8   = 15;
+  // static const uint8_t D9   = 3;
+  // static const uint8_t D10  = 1;
 
-  // we have to init all devices in a loop
-  // for (int address = 0; address < devices; address++)
-  // {
-  //   // the MAX72XX is in power-saving mode on startup
-  //   lc.shutdown(address, false);
-  //   // set the brightness to a medium values
-  //   lc.setIntensity(address, 8);
-  //   // clear the display
-  //   lc.clearDisplay(address);
-  // }
+  // we have already set the number of devices when we created the LedControl
+  int devices = lc.getDeviceCount();
+
+  // // we have to init all devices in a loop
+  for (int address = 0; address < devices; address++)
+  {
+    // the MAX72XX is in power-saving mode on startup
+    lc.shutdown(address, false);
+    // set the brightness to a medium values
+    lc.setIntensity(address, 8);
+    // clear the display
+    lc.clearDisplay(address);
+  }
 }
 
 void loop()
@@ -50,22 +63,22 @@ void loop()
   // lampOn(5000);
 
   // read the number cascaded devices
-  // int devices = lc.getDeviceCount();
+  int devices = lc.getDeviceCount();
 
   // // we have to init all devices in a loop
-  // for (int row = 0; row < 8; row++)
-  // {
-  //   for (int col = 0; col < 8; col++)
-  //   {
-  //     for (int address = 0; address < devices; address++)
-  //     {
-  //       delay(delaytime);
-  //       lc.setLed(address, row, col, true);
-  //       delay(delaytime);
-  //       lc.setLed(address, row, col, false);
-  //     }
-  //   }
-  // }
+  for (int row = 0; row < 8; row++)
+  {
+    for (int col = 0; col < 8; col++)
+    {
+      for (int address = 0; address < devices; address++)
+      {
+        delay(delaytime);
+        lc.setLed(address, row, col, true);
+        delay(delaytime);
+        lc.setLed(address, row, col, false);
+      }
+    }
+  }
 }
 
 void lampOff(int milliseconds)

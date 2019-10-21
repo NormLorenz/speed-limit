@@ -29,17 +29,17 @@
 
 // #include <avr/pgmspace.h>
 
-#if defined(__AVR__)
-#include <avr/pgmspace.h>
-#elif defined(ESP8266)
-#include <pgmspace.h>
-#endif
+// #if defined(__AVR__)
+// #include <avr/pgmspace.h>
+// #elif defined(ESP8266)
+// #include <pgmspace.h>
+// #endif
 
-#if (ARDUINO >= 100)
+// #if (ARDUINO >= 100)
 #include <Arduino.h>
-#else
-#include <WProgram.h>
-#endif
+// #else
+// #include <WProgram.h>
+// #endif
 
 /*
  * Segments to be switched on for characters and digits on
