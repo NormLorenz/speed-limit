@@ -4,6 +4,8 @@
 // declare function prototypes
 void lampOn(int);
 void lampOff(int);
+void showBoundries(bool action);
+
 //void setup();
 //void loop();
 
@@ -48,7 +50,7 @@ void setup()
     // the MAX72XX is in power-saving mode on startup
     lc.shutdown(address, false);
     // set the brightness to a medium values
-    lc.setIntensity(address, 8);
+    lc.setIntensity(address, 0);
     // clear the display
     lc.clearDisplay(address);
   }
@@ -63,22 +65,23 @@ void loop()
   // lampOn(5000);
 
   // read the number cascaded devices
-  int devices = lc.getDeviceCount();
+  // int devices = lc.getDeviceCount();
 
   // // we have to init all devices in a loop
-  for (int row = 0; row < 8; row++)
-  {
-    for (int col = 0; col < 8; col++)
-    {
-      for (int address = 0; address < devices; address++)
-      {
-        delay(delaytime);
-        lc.setLed(address, row, col, true);
-        delay(delaytime);
-        lc.setLed(address, row, col, false);
-      }
-    }
-  }
+  // for (int row = 0; row < 8; row++)
+  // {
+  //   for (int col = 0; col < 8; col++)
+  //   {
+  //     for (int address = 0; address < devices; address++)
+  //     {
+  //       delay(delaytime);
+  //       lc.setLed(address, row, col, true);
+  //       delay(delaytime);
+  //       lc.setLed(address, row, col, false);
+  //     }
+  //   }
+  showBoundries(true);
+  showBoundries(false);
 }
 
 void lampOff(int milliseconds)
@@ -97,4 +100,21 @@ void lampOn(int milliseconds)
 
   // wait
   delay(milliseconds);
+}
+
+void showBoundries(bool action)
+{
+  int delayTimer = 500;
+
+  for (int addr = 0; addr < 4; addr++)
+  {
+    lc.setLed(addr, 0, 0, action);
+    delay(delayTimer);
+    lc.setLed(addr, 0, 7, action);
+    delay(delayTimer);
+    lc.setLed(addr, 7, 0, action);
+    delay(delayTimer);
+    lc.setLed(addr, 7, 7, action);
+    delay(delayTimer);
+  }
 }
