@@ -27,19 +27,7 @@
 #ifndef LedControl_h
 #define LedControl_h
 
-// #include <avr/pgmspace.h>
-
-// #if defined(__AVR__)
-// #include <avr/pgmspace.h>
-// #elif defined(ESP8266)
-// #include <pgmspace.h>
-// #endif
-
-// #if (ARDUINO >= 100)
 #include <Arduino.h>
-// #else
-// #include <WProgram.h>
-// #endif
 
 /*
  * Segments to be switched on for characters and digits on
